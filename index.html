@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Climate Change Information Portal</title>
+<title>Climate Change Dashboard</title>
 
 <style>
 *{
@@ -14,198 +14,300 @@
 
 body{
     font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#021b2d,#0b3d2e,#0d5c3f);
     min-height:100vh;
-    background:
-    linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
-    url('https://images.unsplash.com/photo-1472214103451-9374bd1c798');
-    background-size:cover;
-    background-position:center;
+    overflow-x:hidden;
     color:white;
-    text-align:center;
+    position:relative;
+}
+
+/* Animated Earth */
+.earth{
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:450px;
+    height:450px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:url('https://upload.wikimedia.org/wikipedia/commons/8/80/Equirectangular-projection.jpg');
+    background-size:cover;
+    box-shadow:
+        0 0 60px rgba(0,150,255,.4),
+        inset -40px 0 40px rgba(0,0,0,.5);
+    animation:rotateEarth 40s linear infinite;
+    opacity:.15;
+    z-index:-1;
+}
+
+@keyframes rotateEarth{
+    from{
+        background-position:0 0;
+    }
+    to{
+        background-position:1000px 0;
+    }
 }
 
 header{
-    padding:25px;
-    background:rgba(0,80,50,.75);
-    backdrop-filter:blur(4px);
+    text-align:center;
+    padding:30px;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(10px);
 }
 
 header h1{
-    font-size:2.2rem;
+    font-size:2.5rem;
+    margin-bottom:10px;
 }
 
 header p{
-    margin-top:10px;
+    color:#d0ffd0;
 }
 
 .container{
-    width:90%;
-    max-width:1200px;
+    width:95%;
+    max-width:1400px;
     margin:auto;
-    padding:30px 0;
+    padding:30px;
 }
 
+/* Main Dashboard */
+.main-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+/* Main Buttons */
 .btn{
-    background:#1b5e20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
     color:white;
-    border:none;
-    padding:15px 25px;
-    margin:10px;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:16px;
+    background:rgba(0,120,70,.8);
+    padding:18px;
+    border-radius:15px;
+    font-size:17px;
+    font-weight:bold;
     transition:.3s;
-    min-width:220px;
+    cursor:pointer;
+    border:none;
+    min-height:70px;
 }
 
 .btn:hover{
-    background:#2e7d32;
-    transform:translateY(-3px);
+    transform:translateY(-5px);
+    background:#18a558;
+    box-shadow:0 0 20px rgba(0,255,120,.5);
 }
 
+/* Sub Menu */
 .sub-container{
     display:none;
-    margin-top:15px;
-    padding:15px;
+    margin-top:25px;
+    padding:20px;
+    border-radius:20px;
     background:rgba(255,255,255,.08);
-    border-radius:15px;
-    animation:fadeIn .4s;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(-10px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    backdrop-filter:blur(8px);
 }
 
 .section-title{
-    margin:15px 0;
-    font-size:20px;
-    color:#90ee90;
+    text-align:center;
+    margin-bottom:20px;
+    font-size:24px;
+    color:#9cff9c;
+}
+
+/* Professional Grid */
+.sub-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.sub-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+    background:#156d3c;
+    border-radius:12px;
+    min-height:65px;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.sub-btn:hover{
+    background:#1faa59;
+    transform:scale(1.03);
 }
 
 footer{
+    text-align:center;
+    padding:20px;
     margin-top:40px;
-    padding:15px;
-    background:rgba(0,0,0,.5);
-}
-
-@media(max-width:768px){
-    .btn{
-        width:95%;
-    }
+    background:rgba(0,0,0,.3);
 }
 </style>
 </head>
 <body>
 
+<div class="earth"></div>
+
 <header>
-    <h1>🌍 Climate Change Information Portal</h1>
-    <p>Explore climate action, sustainability, and environmental awareness.</p>
+    <h1>🌍 Climate Change Dashboard</h1>
+    <p>Environmental Sustainability • Climate Action • Green Development</p>
 </header>
 
 <div class="container">
 
-    <!-- MAIN BUTTONS -->
-    <div>
-        <button class="btn">1. Climate Overview</button>
-        <button class="btn">2. Global Warming</button>
+<div class="main-grid">
 
-        <button class="btn" onclick="toggleMenu('menu3')">
-            3. Climate Solutions
-        </button>
+<a href="https://example.com/overview" class="btn">
+1. Climate Overview
+</a>
 
-        <button class="btn" onclick="toggleMenu('menu4')">
-            4. Environmental Programs
-        </button>
+<a href="https://example.com/globalwarming" class="btn">
+2. Global Warming
+</a>
 
-        <button class="btn" onclick="toggleMenu('menu5')">
-            5. Sustainability Projects
-        </button>
+<button class="btn" onclick="toggleMenu('menu3')">
+3. Climate Solutions
+</button>
 
-        <button class="btn" onclick="toggleMenu('menu6')">
-            6. Climate Resources
-        </button>
+<button class="btn" onclick="toggleMenu('menu4')">
+4. Environmental Programs
+</button>
 
-        <button class="btn">7. News & Updates</button>
-        <button class="btn">8. Contact Us</button>
-    </div>
+<button class="btn" onclick="toggleMenu('menu5')">
+5. Sustainability Projects
+</button>
 
-    <!-- BUTTON 3 -->
-    <div id="menu3" class="sub-container">
-        <div class="section-title">
-            Climate Solutions
-        </div>
+<button class="btn" onclick="toggleMenu('menu6')">
+6. Climate Resources
+</button>
 
-        <button class="btn">Renewable Energy</button>
-        <button class="btn">Carbon Reduction</button>
-        <button class="btn">Green Transportation</button>
-        <button class="btn">Community Action</button>
-    </div>
+<a href="https://example.com/news" class="btn">
+7. News & Updates
+</a>
 
-    <!-- BUTTON 4 -->
-    <div id="menu4" class="sub-container">
-        <div class="section-title">
-            Environmental Programs
-        </div>
+<a href="https://example.com/contact" class="btn">
+8. Contact Us
+</a>
 
-        <button class="btn">Program 1</button>
-        <button class="btn">Program 2</button>
-        <button class="btn">Program 3</button>
-        <button class="btn">Program 4</button>
-        <button class="btn">Program 5</button>
-        <button class="btn">Program 6</button>
-        <button class="btn">Program 7</button>
-        <button class="btn">Program 8</button>
-        <button class="btn">Program 9</button>
-    </div>
+</div>
 
-    <!-- BUTTON 5 -->
-    <div id="menu5" class="sub-container">
-        <div class="section-title">
-            Sustainability Projects
-        </div>
+<!-- Button 3 -->
+<div id="menu3" class="sub-container">
 
-        <button class="btn">Project 1</button>
-        <button class="btn">Project 2</button>
-        <button class="btn">Project 3</button>
-        <button class="btn">Project 4</button>
-        <button class="btn">Project 5</button>
-        <button class="btn">Project 6</button>
-        <button class="btn">Project 7</button>
-    </div>
+<h2 class="section-title">
+Climate Solutions
+</h2>
 
-    <!-- BUTTON 6 -->
-    <div id="menu6" class="sub-container">
-        <div class="section-title">
-            Climate Resources
-        </div>
+<div class="sub-grid">
 
-        <button class="btn">Resource 1</button>
-        <button class="btn">Resource 2</button>
-        <button class="btn">Resource 3</button>
-    </div>
+<a href="https://example.com/renewable" class="sub-btn">
+Renewable Energy
+</a>
+
+<a href="https://example.com/carbon" class="sub-btn">
+Carbon Reduction
+</a>
+
+<a href="https://example.com/transport" class="sub-btn">
+Green Transportation
+</a>
+
+<a href="https://example.com/community" class="sub-btn">
+Community Action
+</a>
+
+</div>
+
+</div>
+
+<!-- Button 4 -->
+<div id="menu4" class="sub-container">
+
+<h2 class="section-title">
+Environmental Programs
+</h2>
+
+<div class="sub-grid">
+
+<a href="#" class="sub-btn">Program 1</a>
+<a href="#" class="sub-btn">Program 2</a>
+<a href="#" class="sub-btn">Program 3</a>
+<a href="#" class="sub-btn">Program 4</a>
+<a href="#" class="sub-btn">Program 5</a>
+<a href="#" class="sub-btn">Program 6</a>
+<a href="#" class="sub-btn">Program 7</a>
+<a href="#" class="sub-btn">Program 8</a>
+<a href="#" class="sub-btn">Program 9</a>
+
+</div>
+
+</div>
+
+<!-- Button 5 -->
+<div id="menu5" class="sub-container">
+
+<h2 class="section-title">
+Sustainability Projects
+</h2>
+
+<div class="sub-grid">
+
+<a href="#" class="sub-btn">Project 1</a>
+<a href="#" class="sub-btn">Project 2</a>
+<a href="#" class="sub-btn">Project 3</a>
+<a href="#" class="sub-btn">Project 4</a>
+<a href="#" class="sub-btn">Project 5</a>
+<a href="#" class="sub-btn">Project 6</a>
+<a href="#" class="sub-btn">Project 7</a>
+
+</div>
+
+</div>
+
+<!-- Button 6 -->
+<div id="menu6" class="sub-container">
+
+<h2 class="section-title">
+Climate Resources
+</h2>
+
+<div class="sub-grid">
+
+<a href="#" class="sub-btn">Resource 1</a>
+<a href="#" class="sub-btn">Resource 2</a>
+<a href="#" class="sub-btn">Resource 3</a>
+
+</div>
+
+</div>
 
 </div>
 
 <footer>
-    © 2026 Climate Change Information Portal
+🌱 Climate Change Dashboard © 2026
 </footer>
 
 <script>
 function toggleMenu(id){
-    let menu=document.getElementById(id);
 
-    if(menu.style.display==="block"){
-        menu.style.display="none";
-    }else{
-        menu.style.display="block";
-    }
+const menu=document.getElementById(id);
+
+if(menu.style.display==="block"){
+    menu.style.display="none";
+}else{
+    menu.style.display="block";
+}
+
 }
 </script>
 
