@@ -6,6 +6,7 @@
 <title>Climate Change Dashboard</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -14,57 +15,55 @@
 
 body{
     font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#021b2d,#0b3d2e,#0d5c3f);
-    min-height:100vh;
     overflow-x:hidden;
+    background:#000;
     color:white;
-    position:relative;
 }
 
-/* Animated Earth */
-.earth{
+/* 3D Globe Background */
+#earth-container{
     position:fixed;
-    top:50%;
-    left:50%;
-    width:450px;
-    height:450px;
-    transform:translate(-50%,-50%);
-    border-radius:50%;
-    background:url('https://upload.wikimedia.org/wikipedia/commons/8/80/Equirectangular-projection.jpg');
-    background-size:cover;
-    box-shadow:
-        0 0 60px rgba(0,150,255,.4),
-        inset -40px 0 40px rgba(0,0,0,.5);
-    animation:rotateEarth 40s linear infinite;
-    opacity:.15;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-2;
+}
+
+/* Dark Overlay */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(
+        rgba(0,20,30,.35),
+        rgba(0,0,0,.45)
+    );
     z-index:-1;
 }
 
-@keyframes rotateEarth{
-    from{
-        background-position:0 0;
-    }
-    to{
-        background-position:1000px 0;
-    }
-}
-
+/* Header */
 header{
     text-align:center;
     padding:30px;
-    background:rgba(0,0,0,.35);
+    background:rgba(0,0,0,.45);
     backdrop-filter:blur(10px);
 }
 
 header h1{
     font-size:2.5rem;
-    margin-bottom:10px;
+    color:#7dffb3;
 }
 
 header p{
-    color:#d0ffd0;
+    margin-top:10px;
+    color:#e0e0e0;
 }
 
+/* Main Container */
 .container{
     width:95%;
     max-width:1400px;
@@ -72,55 +71,56 @@ header p{
     padding:30px;
 }
 
-/* Main Dashboard */
+/* Main Buttons Grid */
 .main-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
 }
 
 /* Main Buttons */
 .btn{
+    background:rgba(0,100,60,.8);
+    color:white;
+    border:none;
+    border-radius:15px;
+    min-height:75px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    text-decoration:none;
     display:flex;
     align-items:center;
     justify-content:center;
-    text-decoration:none;
-    color:white;
-    background:rgba(0,120,70,.8);
-    padding:18px;
-    border-radius:15px;
-    font-size:17px;
-    font-weight:bold;
-    transition:.3s;
-    cursor:pointer;
-    border:none;
-    min-height:70px;
+    backdrop-filter:blur(5px);
 }
 
 .btn:hover{
     transform:translateY(-5px);
-    background:#18a558;
-    box-shadow:0 0 20px rgba(0,255,120,.5);
+    background:#14a44d;
+    box-shadow:
+    0 0 25px rgba(0,255,120,.5);
 }
 
-/* Sub Menu */
+/* Sub Menus */
 .sub-container{
     display:none;
     margin-top:25px;
-    padding:20px;
-    border-radius:20px;
     background:rgba(255,255,255,.08);
-    backdrop-filter:blur(8px);
+    border-radius:20px;
+    padding:25px;
+    backdrop-filter:blur(10px);
 }
 
 .section-title{
     text-align:center;
+    color:#9cffc4;
     margin-bottom:20px;
-    font-size:24px;
-    color:#9cff9c;
 }
 
-/* Professional Grid */
+/* Dashboard Grid */
 .sub-grid{
     display:grid;
     grid-template-columns:
@@ -129,49 +129,52 @@ header p{
 }
 
 .sub-btn{
+    background:#0f6f3d;
+    color:white;
+    text-decoration:none;
+    min-height:65px;
+    border-radius:12px;
     display:flex;
     justify-content:center;
     align-items:center;
-    text-decoration:none;
-    color:white;
-    background:#156d3c;
-    border-radius:12px;
-    min-height:65px;
     transition:.3s;
     font-weight:bold;
 }
 
 .sub-btn:hover{
-    background:#1faa59;
+    background:#18b85f;
     transform:scale(1.03);
 }
 
+/* Footer */
 footer{
     text-align:center;
     padding:20px;
     margin-top:40px;
-    background:rgba(0,0,0,.3);
+    background:rgba(0,0,0,.5);
 }
+
 </style>
 </head>
 <body>
 
-<div class="earth"></div>
+<div id="earth-container"></div>
+<div class="overlay"></div>
 
 <header>
     <h1>🌍 Climate Change Dashboard</h1>
-    <p>Environmental Sustainability • Climate Action • Green Development</p>
+    <p>Climate Action • Sustainability • Environmental Monitoring</p>
 </header>
 
 <div class="container">
 
 <div class="main-grid">
 
-<a href="https://example.com/overview" class="btn">
+<a href="https://example.com/button1" class="btn">
 1. Climate Overview
 </a>
 
-<a href="https://example.com/globalwarming" class="btn">
+<a href="https://example.com/button2" class="btn">
 2. Global Warming
 </a>
 
@@ -191,54 +194,36 @@ footer{
 6. Climate Resources
 </button>
 
-<a href="https://example.com/news" class="btn">
+<a href="https://example.com/button7" class="btn">
 7. News & Updates
 </a>
 
-<a href="https://example.com/contact" class="btn">
+<a href="https://example.com/button8" class="btn">
 8. Contact Us
 </a>
 
 </div>
 
-<!-- Button 3 -->
+<!-- BUTTON 3 -->
 <div id="menu3" class="sub-container">
 
-<h2 class="section-title">
-Climate Solutions
-</h2>
+<h2 class="section-title">Climate Solutions</h2>
 
 <div class="sub-grid">
-
-<a href="https://example.com/renewable" class="sub-btn">
-Renewable Energy
-</a>
-
-<a href="https://example.com/carbon" class="sub-btn">
-Carbon Reduction
-</a>
-
-<a href="https://example.com/transport" class="sub-btn">
-Green Transportation
-</a>
-
-<a href="https://example.com/community" class="sub-btn">
-Community Action
-</a>
-
+<a href="#" class="sub-btn">Renewable Energy</a>
+<a href="#" class="sub-btn">Carbon Reduction</a>
+<a href="#" class="sub-btn">Green Transportation</a>
+<a href="#" class="sub-btn">Community Action</a>
 </div>
 
 </div>
 
-<!-- Button 4 -->
+<!-- BUTTON 4 -->
 <div id="menu4" class="sub-container">
 
-<h2 class="section-title">
-Environmental Programs
-</h2>
+<h2 class="section-title">Environmental Programs</h2>
 
 <div class="sub-grid">
-
 <a href="#" class="sub-btn">Program 1</a>
 <a href="#" class="sub-btn">Program 2</a>
 <a href="#" class="sub-btn">Program 3</a>
@@ -248,20 +233,16 @@ Environmental Programs
 <a href="#" class="sub-btn">Program 7</a>
 <a href="#" class="sub-btn">Program 8</a>
 <a href="#" class="sub-btn">Program 9</a>
-
 </div>
 
 </div>
 
-<!-- Button 5 -->
+<!-- BUTTON 5 -->
 <div id="menu5" class="sub-container">
 
-<h2 class="section-title">
-Sustainability Projects
-</h2>
+<h2 class="section-title">Sustainability Projects</h2>
 
 <div class="sub-grid">
-
 <a href="#" class="sub-btn">Project 1</a>
 <a href="#" class="sub-btn">Project 2</a>
 <a href="#" class="sub-btn">Project 3</a>
@@ -269,24 +250,19 @@ Sustainability Projects
 <a href="#" class="sub-btn">Project 5</a>
 <a href="#" class="sub-btn">Project 6</a>
 <a href="#" class="sub-btn">Project 7</a>
-
 </div>
 
 </div>
 
-<!-- Button 6 -->
+<!-- BUTTON 6 -->
 <div id="menu6" class="sub-container">
 
-<h2 class="section-title">
-Climate Resources
-</h2>
+<h2 class="section-title">Climate Resources</h2>
 
 <div class="sub-grid">
-
 <a href="#" class="sub-btn">Resource 1</a>
 <a href="#" class="sub-btn">Resource 2</a>
 <a href="#" class="sub-btn">Resource 3</a>
-
 </div>
 
 </div>
@@ -297,7 +273,13 @@ Climate Resources
 🌱 Climate Change Dashboard © 2026
 </footer>
 
+<!-- THREE.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 <script>
+
+/* ---------- MENU ---------- */
+
 function toggleMenu(id){
 
 const menu=document.getElementById(id);
@@ -309,6 +291,219 @@ if(menu.style.display==="block"){
 }
 
 }
+
+/* ---------- 3D EARTH ---------- */
+
+const scene = new THREE.Scene();
+
+const camera =
+new THREE.PerspectiveCamera(
+60,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+);
+
+camera.position.z = 3.5;
+
+const renderer =
+new THREE.WebGLRenderer({
+antialias:true,
+alpha:true
+});
+
+renderer.setSize(
+window.innerWidth,
+window.innerHeight
+);
+
+document
+.getElementById("earth-container")
+.appendChild(renderer.domElement);
+
+/* Stars */
+
+const starsGeometry =
+new THREE.BufferGeometry();
+
+const starsVertices = [];
+
+for(let i=0;i<15000;i++){
+
+const x=(Math.random()-0.5)*3000;
+const y=(Math.random()-0.5)*3000;
+const z=(Math.random()-0.5)*3000;
+
+starsVertices.push(x,y,z);
+
+}
+
+starsGeometry.setAttribute(
+'position',
+new THREE.Float32BufferAttribute(
+starsVertices,3
+)
+);
+
+const starsMaterial =
+new THREE.PointsMaterial({
+size:1.2
+});
+
+const starField =
+new THREE.Points(
+starsGeometry,
+starsMaterial
+);
+
+scene.add(starField);
+
+/* Texture Loader */
+
+const loader =
+new THREE.TextureLoader();
+
+/* Earth */
+
+const earthGeometry =
+new THREE.SphereGeometry(
+1,
+64,
+64
+);
+
+const earthMaterial =
+new THREE.MeshPhongMaterial({
+map:loader.load(
+'https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg'
+)
+});
+
+const earth =
+new THREE.Mesh(
+earthGeometry,
+earthMaterial
+);
+
+scene.add(earth);
+
+/* Clouds */
+
+const cloudGeometry =
+new THREE.SphereGeometry(
+1.015,
+64,
+64
+);
+
+const cloudMaterial =
+new THREE.MeshPhongMaterial({
+map:loader.load(
+'https://raw.githubusercontent.com/turban/webgl-earth/master/images/fair_clouds_4k.png'
+),
+transparent:true,
+opacity:0.45
+});
+
+const clouds =
+new THREE.Mesh(
+cloudGeometry,
+cloudMaterial
+);
+
+scene.add(clouds);
+
+/* Atmosphere Glow */
+
+const glowGeometry =
+new THREE.SphereGeometry(
+1.08,
+64,
+64
+);
+
+const glowMaterial =
+new THREE.MeshBasicMaterial({
+color:0x4fc3ff,
+transparent:true,
+opacity:0.15
+});
+
+const glow =
+new THREE.Mesh(
+glowGeometry,
+glowMaterial
+);
+
+scene.add(glow);
+
+/* Lighting */
+
+const ambient =
+new THREE.AmbientLight(
+0xffffff,
+0.8
+);
+
+scene.add(ambient);
+
+const sun =
+new THREE.DirectionalLight(
+0xffffff,
+1.5
+);
+
+sun.position.set(
+5,
+3,
+5
+);
+
+scene.add(sun);
+
+/* Animation */
+
+function animate(){
+
+requestAnimationFrame(
+animate
+);
+
+earth.rotation.y += 0.0015;
+
+clouds.rotation.y += 0.0025;
+
+starField.rotation.y += 0.0001;
+
+renderer.render(
+scene,
+camera
+);
+
+}
+
+animate();
+
+/* Resize */
+
+window.addEventListener(
+'resize',
+()=>{
+
+camera.aspect =
+window.innerWidth /
+window.innerHeight;
+
+camera.updateProjectionMatrix();
+
+renderer.setSize(
+window.innerWidth,
+window.innerHeight
+);
+
+}
+);
+
 </script>
 
 </body>
