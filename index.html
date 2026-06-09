@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Change Information Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+    url('https://images.unsplash.com/photo-1472214103451-9374bd1c798');
+    background-size:cover;
+    background-position:center;
+    color:white;
+    text-align:center;
+}
+
+header{
+    padding:25px;
+    background:rgba(0,80,50,.75);
+    backdrop-filter:blur(4px);
+}
+
+header h1{
+    font-size:2.2rem;
+}
+
+header p{
+    margin-top:10px;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:30px 0;
+}
+
+.btn{
+    background:#1b5e20;
+    color:white;
+    border:none;
+    padding:15px 25px;
+    margin:10px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+    min-width:220px;
+}
+
+.btn:hover{
+    background:#2e7d32;
+    transform:translateY(-3px);
+}
+
+.sub-container{
+    display:none;
+    margin-top:15px;
+    padding:15px;
+    background:rgba(255,255,255,.08);
+    border-radius:15px;
+    animation:fadeIn .4s;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.section-title{
+    margin:15px 0;
+    font-size:20px;
+    color:#90ee90;
+}
+
+footer{
+    margin-top:40px;
+    padding:15px;
+    background:rgba(0,0,0,.5);
+}
+
+@media(max-width:768px){
+    .btn{
+        width:95%;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🌍 Climate Change Information Portal</h1>
+    <p>Explore climate action, sustainability, and environmental awareness.</p>
+</header>
+
+<div class="container">
+
+    <!-- MAIN BUTTONS -->
+    <div>
+        <button class="btn">1. Climate Overview</button>
+        <button class="btn">2. Global Warming</button>
+
+        <button class="btn" onclick="toggleMenu('menu3')">
+            3. Climate Solutions
+        </button>
+
+        <button class="btn" onclick="toggleMenu('menu4')">
+            4. Environmental Programs
+        </button>
+
+        <button class="btn" onclick="toggleMenu('menu5')">
+            5. Sustainability Projects
+        </button>
+
+        <button class="btn" onclick="toggleMenu('menu6')">
+            6. Climate Resources
+        </button>
+
+        <button class="btn">7. News & Updates</button>
+        <button class="btn">8. Contact Us</button>
+    </div>
+
+    <!-- BUTTON 3 -->
+    <div id="menu3" class="sub-container">
+        <div class="section-title">
+            Climate Solutions
+        </div>
+
+        <button class="btn">Renewable Energy</button>
+        <button class="btn">Carbon Reduction</button>
+        <button class="btn">Green Transportation</button>
+        <button class="btn">Community Action</button>
+    </div>
+
+    <!-- BUTTON 4 -->
+    <div id="menu4" class="sub-container">
+        <div class="section-title">
+            Environmental Programs
+        </div>
+
+        <button class="btn">Program 1</button>
+        <button class="btn">Program 2</button>
+        <button class="btn">Program 3</button>
+        <button class="btn">Program 4</button>
+        <button class="btn">Program 5</button>
+        <button class="btn">Program 6</button>
+        <button class="btn">Program 7</button>
+        <button class="btn">Program 8</button>
+        <button class="btn">Program 9</button>
+    </div>
+
+    <!-- BUTTON 5 -->
+    <div id="menu5" class="sub-container">
+        <div class="section-title">
+            Sustainability Projects
+        </div>
+
+        <button class="btn">Project 1</button>
+        <button class="btn">Project 2</button>
+        <button class="btn">Project 3</button>
+        <button class="btn">Project 4</button>
+        <button class="btn">Project 5</button>
+        <button class="btn">Project 6</button>
+        <button class="btn">Project 7</button>
+    </div>
+
+    <!-- BUTTON 6 -->
+    <div id="menu6" class="sub-container">
+        <div class="section-title">
+            Climate Resources
+        </div>
+
+        <button class="btn">Resource 1</button>
+        <button class="btn">Resource 2</button>
+        <button class="btn">Resource 3</button>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Climate Change Information Portal
+</footer>
+
+<script>
+function toggleMenu(id){
+    let menu=document.getElementById(id);
+
+    if(menu.style.display==="block"){
+        menu.style.display="none";
+    }else{
+        menu.style.display="block";
+    }
+}
+</script>
+
+</body>
+</html>
